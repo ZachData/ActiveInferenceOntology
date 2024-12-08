@@ -1,6 +1,8 @@
 # ActiveInferenceOntology
 Building an active inference-driven research navigation system that leverages AWS infrastructure (EC2, S3, RDS) and LLMs to analyze active inference papers and guide researchers to the most informative content based on their learning goals, optimizing what one should learn next through information-theoretic paper selection.
 
+The project is an implementation of the active sampling methodology from [Active-Data-Selection](https://github.com/tejparr/Active-Data-Selection)
+
 **Step 1: Infrastructure Setup**
 1. **Goal**: Create scalable AWS infrastructure for paper processing and analysis
    * Set up EC2 instance for computation
