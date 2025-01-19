@@ -1,56 +1,53 @@
-# ActiveInferenceOntology
-Building an active inference-driven research navigation system that leverages AWS infrastructure (EC2, S3, RDS) and LLMs to analyze active inference papers and guide researchers to the most informative content based on their learning goals, optimizing what one should learn next through information-theoretic paper selection.
+Project Overview: 
 
-The project is an implementation of the active sampling methodology from [Active-Data-Selection](https://github.com/tejparr/Active-Data-Selection)
+"Active Inference Research Navigator" - A system that applies active inference principles to intelligently guide researchers through scientific literature. Designed to maximize information gain and minimize time taken for an individual to learn about a topic or understand the breadth of the field by using the methods given in “Active Data Selection and Information Seeking.” 
 
-**Step 1: Infrastructure Setup**
-1. **Goal**: Create scalable AWS infrastructure for paper processing and analysis
-   * Set up EC2 instance for computation
-   * Configure S3 for paper storage and embeddings
-   * Establish RDS for structured metadata and relationships
-2. **Tools**: AWS SDK, Terraform/CloudFormation for IaC
-3. **Objective**: Create robust, scalable infrastructure for paper processing pipeline
+Current Implementation:
+1. Data Processing Pipeline:
+- Uses SPECTER2 for paper embeddings
+- BERTopic for topic modeling
+- These create a semantic ‘paper space’ which can be interpreted as an ontology. 
 
-**Step 2: Data Processing Pipeline**
-1. **Goal**: Build automated pipeline for paper ingestion and analysis
-   * Implement arXiv paper harvesting
-   * Extract text from PDFs/LaTeX sources
-   * Process with LLMs for key concepts/definitions
-2. **Storage Structure**:
-   * Raw papers in S3
-   * Metadata and relationships in RDS
-   * Embeddings for semantic search
-3. **Objective**: Automate paper processing and information extraction
+2. Active Selection Algorithm:
+- Implements information gain algorithm based on the paper ‘Active Data Selection’
+- Finds optimal paths between papers by maximizing information gain while minimizing amount of reading needed
 
-**Step 3: Knowledge Graph Construction**
-1. **Goal**: Create multi-layer knowledge representation
-   * Papers (citations, references, temporal relationships)
-   * Authors (collaborations, institutions)
-   * Concepts (definitions, mathematical formulations)
-2. **Implementation**:
-   * Graph database for relationships
-   * Concept evolution tracking
-   * Citation network analysis
-3. **Objective**: Build structured representation of active inference literature
+3. Core Features:
+- Intelligent paper selection maximizing information gain
+- Topic progression tracking
+- Ability to more easily discover the cutting edge of the field
+- Ability to more easily craft the ‘related works’ section of one’s paper to aid researchers
 
-**Step 4: Active Inference Implementation**
-1. **Goal**: Apply active inference principles to paper selection
-   * Define information gain metrics for papers
-   * Implement sampling strategies
-   * Create cost functions for human attention
-2. **Components**:
-   * Expected knowledge contribution calculation
-   * Resource allocation optimization
-   * Reading order recommendation
-3. **Objective**: Optimize human learning efficiency through intelligent paper selection
+Planned Upgrades:
+1. Semantic Scholar API Integration:
+- Add citation network data
+- Include reference relationships
+- Expand available metadata
+- Access larger paper corpus
 
-**Step 5: Research Navigation Interface**
-1. **Goal**: Create user interface for research exploration
-   * Paper recommendations
-   * Concept exploration
-   * Learning path generation
-2. **Features**:
-   * Interactive network visualization
-   * Concept dependency mapping
-   * Customized reading lists
-3. **Objective**: Enable efficient navigation of active inference literature
+2. Fine-tune SPECTRE2 on active inference data
+- Would produce a richer semantic space (ontology)
+- Improves output of all areas
+
+3. Implement tool as a website via AWS
+- Use EC2/S3 to set up 
+- Semantic Scholar api allows ~1 request/s, so a good sum of time will be needed to build the search space 
+
+Research Value:
+1. For Active Inference Institute:
+- Demonstrates practical application of active inference principles
+- Provides tool for efficiently navigating research literature
+- Supports knowledge discovery and synthesis
+
+2. Novel Contributions:
+- Applies active inference to literature navigation
+- Integrates multiple information sources for paper selection
+- Implements practical path finding in research space
+- Creates reusable framework for research exploration
+
+Future Potential:
+- Could help identify research gaps
+- Support systematic literature reviews
+- Guide research direction decisions
+- Facilitate interdisciplinary connections
+- Assist in research front identification
